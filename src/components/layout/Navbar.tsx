@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { navbarItems } from "../data";
+import { navbarItemsData } from "../../data";
 import Search from "../Ui/Search";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav className=" top-0 left-0 w-full bg-neutral-primary border-b border-default z-50 ">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 h-16">
+      <div className="container mx-auto flex items-center justify-between px-4 h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img src="/images/logo.jpeg" className="h-8 w-auto" alt="Logo" />
@@ -46,7 +46,7 @@ const Navbar = () => {
           className={`
     ${mobileOpen ? "flex" : "hidden"} lg:flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y- lg:space-x-8  absolute lg:static  top-16 left-0  w-full lg:w-auto   bg-neutral-primary lg:bg-transparent  border-b border-default lg:border-none  shadow-lg lg:shadow-none p-4 lg:p- z-40`}
         >
-          {navbarItems.map((item, index) => (
+          {navbarItemsData.map((item, index) => (
             <li key={index} className="relative">
               {/* Normal Links */}
               {item.link && (
@@ -54,7 +54,7 @@ const Navbar = () => {
                   to={item.link}
                   className={`text-sm font-medium transition
                     ${
-                      index === navbarItems.length - 1
+                      index === navbarItemsData.length - 1
                         ? "bg-[#EB662B] text-white px-4 py-2 rounded-md"
                         : "text-body hover:text-[#EB662B]"
                     }

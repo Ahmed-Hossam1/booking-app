@@ -1,11 +1,15 @@
-import Hero from "../components/Hero"
+import Hero from "../components/sections/HeroSection";
+import TrendingDestinationSection from "../components/sections/TrendingDestinationSection";
+import WhyChooseUsSection from "../components/sections/WhyChooseUsSection";
 
 const HomePage = () => {
   return (
-   <>
-   <Hero />
-   </>
-  )
-}
+    <>
+      <Hero />
+      <WhyChooseUsSection />
+      <TrendingDestinationSection /> 
+    </>
+  );
+};
 
-export default HomePage
+export default HomePage;
