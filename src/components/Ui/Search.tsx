@@ -25,21 +25,6 @@ const Search = () => {
           focus:outline-[#db5b25]
         "
       />
-
-      <button
-        type="submit"
-        className="
-        cursor-pointer
-          absolute right-1 top-1/2 -translate-y-1/2
-          h-8 px-3
-          text-xs font-medium text-white
-          bg-[#EB662B] hover:bg-[#db5b25]
-          rounded
-          focus:outline-none focus:ring-2 focus:ring-brand-medium
-        "
-      >
-        Search
-      </button>
     </form>
   );
 };

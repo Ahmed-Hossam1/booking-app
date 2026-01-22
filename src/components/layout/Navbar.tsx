@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { navbarItemsData } from "../../data";
 import Search from "../Ui/Search";
 import { useState } from "react";
+import Button from "../Ui/Button";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -21,25 +24,14 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu button */}
-        <button
+        <Button
           type="button"
-          className="lg:hidden inline-flex items-center justify-center w-10 h-10 text-body hover:text-heading cursor-pointer"
+          backgroundColor=""
+          className="lg:hidden  w-10 h-10 text-body hover:text-heading "
           onClick={() => setMobileOpen((prev) => !prev)}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+          <FaBarsStaggered />
+        </Button>
 
         {/* Navigation Links */}
         <ul
@@ -67,7 +59,8 @@ const Navbar = () => {
               {/* Dropdown */}
               {item.dropdown && (
                 <div className="relative">
-                  <button
+                  <Button
+                    backgroundColor=""
                     onClick={() =>
                       setOpenDropdown(
                         openDropdown === item.name ? null : item.name,
@@ -76,22 +69,13 @@ const Navbar = () => {
                     className="flex items-center gap-1 text-sm font-medium text-body hover:text-[#EB662B] cursor-pointer"
                   >
                     {item.name}
-                    <svg
-                      className={`w-4 h-4 transition ${
-                        openDropdown === item.name ? "rotate-180" : ""
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m19 9-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
+
+                    {openDropdown === item.name ? (
+                      <IoIosArrowUp />
+                    ) : (
+                      <IoIosArrowDown />
+                    )}
+                  </Button>
 
                   {openDropdown === item.name && (
                     <ul className="absolute z-50 left-0 top-full mt-3 w-48 bg-neutral-primary border border-default rounded-md shadow-lg">

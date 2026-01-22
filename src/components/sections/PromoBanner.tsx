@@ -25,11 +25,7 @@ const PromoBanner = () => {
             Limited time offer, don't miss the opportunity
           </p>
 
-          <Button
-            className="mt-6 inline-flex items-center justify-center
-                       rounded-lg bg-brand px-6 py-3 text-sm font-medium text-white
-                       hover:bg-brand-strong transition"
-          >
+          <Button className=" transition text-white px-11 py-4 mt-7 rounded-xl">
             Book Now
           </Button>
         </div>
@@ -44,8 +40,7 @@ const PromoBanner = () => {
 
           {/* curved overlay */}
           <div
-            className=" w-12 md:w-20
-                       bg-[#FFF7F2]"
+            className=" w-12 md:w-20 bg-[#FFF7F2]"
             style={{
               clipPath: "ellipse(100% 100% at 0% 50%)",
             }}

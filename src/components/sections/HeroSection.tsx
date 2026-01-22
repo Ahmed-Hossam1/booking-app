@@ -56,12 +56,14 @@ const HeroSection = () => {
       {/* Arrows */}
       <Button
         onClick={PrevImage}
+        backgroundColor=""
         className=" absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/25 backdrop-blur flex items-center justify-center text-white hover:bg-white/40 active:scale-95 transition"
       >
         <FaArrowLeft className="text-sm sm:text-base" />
       </Button>
 
       <Button
+        backgroundColor=""
         onClick={NextImage}
         className=" absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/25 backdrop-blur flex items-center justify-center text-white hover:bg-white/40 active:scale-95 transition"
       >
@@ -81,7 +83,6 @@ const HeroSection = () => {
           you
         </p>
 
-        {/* CTA Strip */}
         <div className=" mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/95 backdrop-blur px-4 sm:px-6 py-3 rounded-2xl sm:rounded-full shadow-md w-full max-w-md sm:max-w-fit">
           <span className="text-xs font-medium text-gray-500">
             ✦ Explore smarter
@@ -93,7 +94,7 @@ const HeroSection = () => {
             Discover destinations, activities & experiences
           </span>
 
-          <Button className=" sm:ml-2 text-sm font-medium px-4 py-2 rounded-full w-full sm:w-auto ">
+          <Button className="sm:ml-2 text-sm font-medium px-4 py-2 transition text-white rounded-full w-full sm:w-auto ">
             Get started
           </Button>
         </div>

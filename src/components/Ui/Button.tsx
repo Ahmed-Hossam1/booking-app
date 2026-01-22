@@ -2,12 +2,24 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  type?: "button" | "submit";
+  type?: "button" | "submit" | "reset";
+  backgroundColor?: string;
   children: ReactNode;
 }
-const Button = ({ children, className, type = "button", ...rest }: IProps) => {
+const Button = ({
+  children,
+  className,
+  backgroundColor = "#EB662B",
+  type = "button",
+  ...rest
+}: IProps) => {
   return (
-    <button {...rest} type={type} className={` text-white bg-[#EB662B] hover:bg-[#d85723] cursor-pointer ${className}`}>
+    <button
+      className={` text-center capitalize font-medium cursor-pointer ${className}`}
+      style={{ background: backgroundColor }}
+      type={type}
+      {...rest}
+    >
       {children}
     </button>
   );
