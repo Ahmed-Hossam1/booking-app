@@ -33,7 +33,7 @@ const Footer = () => {
   ));
 
   const PayImages = payImagesData.map((item) => (
-    <Image src={item.src} alt={item.alt} className="h-6" />
+    <Image key={item.id} src={item.src} alt={item.alt} className="h-6" />
   ));
   return (
     <footer className="bg-[#FFF7F3] pt-16">

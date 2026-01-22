@@ -60,7 +60,7 @@ export const IFooterLinks: Record<string, FooterLinks[]> = {
       title: "Legal ",
     },
     {
-      id: 7,
+      id: 8,
       title: "Sitemap ",
     },
   ],
