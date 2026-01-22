@@ -1,4 +1,6 @@
+import CustomerReviewSection from "../components/sections/CustomerReviewSection";
 import Hero from "../components/sections/HeroSection";
+import PopularThingsToDoSection from "../components/sections/PopularThingsToDoSection";
 import PopularToursSection from "../components/sections/PopularToursSection";
 import PromoBanner from "../components/sections/PromoBanner";
 import TrendingDestinationSection from "../components/sections/TrendingDestinationSection";
@@ -12,6 +14,8 @@ const HomePage = () => {
       <TrendingDestinationSection />
       <PopularToursSection />
       <PromoBanner /> 
+      <PopularThingsToDoSection /> 
+      <CustomerReviewSection /> 
     </>
   );
 };

@@ -2,6 +2,7 @@ import type {
   IDestinationCard,
   IHeroImages,
   INavbarItems,
+  IPayImages,
   IWhyChooseUs,
 } from "../interface";
 
@@ -142,4 +143,13 @@ export const trendingDestinationsData: IDestinationCard[] = [
     title: "Cappadocia",
     tours: 900,
   },
+];
+
+export const payImagesData: IPayImages[] = [
+  { id: 1, src: "/images/visa.png", alt: "Pay1" },
+  { id: 2, src: "/images/mastercard.png", alt: "Pay2" },
+  { id: 3, src: "/images/applepay.png", alt: "Pay3" },
+  { id: 4, src: "/images/discover.png", alt: "Pay4" },
+  { id: 5, src: "/images/paypal.png", alt: "Pay5" },
+  { id: 6, src: "/images/amex.png", alt: "Pay6" },
 ];

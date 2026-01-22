@@ -8,6 +8,7 @@
 // }
 
 import Button from "../Ui/Button";
+import Image from "../Ui/Image";
 import SectionWrapper from "./SectionWrapper";
 
 const PromoBanner = () => {
@@ -16,8 +17,8 @@ const PromoBanner = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
         {/* Left content */}
         <div className="relative z-10 px-6 py-12 md:px-12 lg:py-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#05073C] leading-snug">
-            Grab up to <span className="text-brand"> 35% off</span> on your
+          <h2 className="capitalize text-3xl md:text-4xl font-bold text-[#05073C] leading-snug">
+            Grab up to <span className="text-[#EB662B]"> 35% off</span> on your
             favorite Destination
           </h2>
 
@@ -31,20 +32,8 @@ const PromoBanner = () => {
         </div>
 
         {/* Right image */}
-        <div className="flex justify-between">
-          <img
-            src={"/images/Promo.jpeg"}
-            alt="Promo"
-            className=" w-full h-full object-cover"
-          />
-
-          {/* curved overlay */}
-          <div
-            className=" w-12 md:w-20 bg-[#FFF7F2]"
-            style={{
-              clipPath: "ellipse(100% 100% at 0% 50%)",
-            }}
-          />
+        <div className="relative w-full h-full overflow-hidden rounded-2xl">
+          <Image src="/images/Promo.jpeg" alt="" className=" h-full " />
         </div>
       </div>
     </SectionWrapper>
