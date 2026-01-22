@@ -2,6 +2,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Button from "../Ui/Button";
 import { useEffect, useState } from "react";
 import { heroSlidesData } from "../../data";
+import Image from "../Ui/Image";
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -30,11 +31,7 @@ const HeroSection = () => {
 
   const slides = heroSlidesData.map((image, index) => (
     <div key={index} className="w-full h-full shrink-0">
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="w-full h-full object-cover"
-      />
+      <Image  src={image.src} alt={image.alt} className="h-full object-cover" />
     </div>
   ));
 

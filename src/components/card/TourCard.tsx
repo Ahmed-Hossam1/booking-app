@@ -1,11 +1,13 @@
+import Image from "../Ui/Image";
+
 const TourCard = () => {
   return (
     <div className=" bg-white border border-[#E7E6E6] rounded-xl overflow-hidden hover:shadow-lg transition">
       <div className="relative p-2 rounded-xl">
-        <img
+        <Image
           src={"/images/PopularTours1.jpeg"}
           alt={"PopularTours1"}
-          className="w-full h-50 object-center rounded-xl"
+          className="rounded-xl"
         />
 
         {/* Floating white circle */}
