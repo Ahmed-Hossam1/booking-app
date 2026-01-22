@@ -1,4 +1,5 @@
 import Hero from "../components/sections/HeroSection";
+import PopularToursSection from "../components/sections/PopularToursSection";
 import TrendingDestinationSection from "../components/sections/TrendingDestinationSection";
 import WhyChooseUsSection from "../components/sections/WhyChooseUsSection";
 
@@ -7,7 +8,8 @@ const HomePage = () => {
     <>
       <Hero />
       <WhyChooseUsSection />
-      <TrendingDestinationSection /> 
+      <TrendingDestinationSection />
+      <PopularToursSection />
     </>
   );
 };
