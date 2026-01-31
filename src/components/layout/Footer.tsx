@@ -35,6 +35,8 @@ const Footer = () => {
   const PayImages = payImagesData.map((item) => (
     <Image key={item.id} src={item.src} alt={item.alt} className="h-6" />
   ));
+
+  
   return (
     <footer className="bg-[#FFF7F3] pt-16">
       <div className="container mx-auto px-4">
@@ -73,9 +75,9 @@ const Footer = () => {
                 name="sendEmail"
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 text-sm outline-none"
+                className="flex-1 py-3 pl-2 text-sm outline-none"
               />
-              <Button className="px-6 text-sm font-medium text-white">
+              <Button className="flex-1  text-sm font-medium text-white ">
                 Send
               </Button>
             </div>
@@ -90,7 +92,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="border-t border-default py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-body">© Copyright Viatours 2024</p>
+          <p className="text-sm text-body">© Copyright Viatours 2026</p>
 
           <div className="flex items-center gap-2">{PayImages}</div>
         </div>

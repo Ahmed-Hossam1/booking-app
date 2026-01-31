@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #EB662B;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+
 .masonry {
   column-count: 3;
   column-gap: 24px;
