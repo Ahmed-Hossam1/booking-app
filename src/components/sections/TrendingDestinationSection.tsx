@@ -3,10 +3,13 @@ import Bullets from "../Ui/Bullets";
 import DestinationCard from "../card/DestinationCard";
 import Heading from "../Ui/Heading";
 import SectionWrapper from "./SectionWrapper";
+import { Link } from "react-router-dom";
 
 const TrendingDestinationSection = () => {
   const content = trendingDestinationsData.map((item) => (
-    <DestinationCard {...item} key={item.id} />
+    <Link to={`/explore/${item.title}`}>
+      <DestinationCard {...item} key={item.id} />
+    </Link>
   ));
   return (
     <SectionWrapper>
