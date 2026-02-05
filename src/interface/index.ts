@@ -101,3 +101,17 @@ export interface IPayImages {
   src: string;
   alt: string;
 }
+
+export interface IActivity {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  rating: number;
+  reviewCount: number;
+  duration: string;
+  price: number;
+  originalPrice?: number;
+  isBestSeller?: boolean;
+  category: string;
+}
