@@ -29,7 +29,7 @@ export const navbarItemsData: INavbarItems[] = [
   },
   {
     name: "Signup",
-    link: "/signup",
+    link: "/sign-up",
   },
 ];
 
