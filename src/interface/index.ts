@@ -115,3 +115,12 @@ export interface IActivity {
   isBestSeller?: boolean;
   category: string;
 }
+
+interface IHotel {
+  id: number;
+  name: string;
+  city: string;
+  price: number;
+  rating: number;
+  image: string;
+}

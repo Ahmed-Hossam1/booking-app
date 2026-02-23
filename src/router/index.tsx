@@ -7,6 +7,7 @@ import RootLayout from "../layout/RootLayout";
 import Service from "../pages/Service";
 import HomePage from "../pages/Home";
 import ExplorePage from "../pages/ExplorePage";
+import HotelsPage from "../pages/HotelsPage";
 import LoginPage from "../pages/Login";
 import SignUpPage from "../pages/SignUp";
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path="Services" element={<Service />} />
         <Route path="explore/:destination" element={<ExplorePage />} />
+        <Route path="hotels" element={<HotelsPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
