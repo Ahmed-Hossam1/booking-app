@@ -116,11 +116,16 @@ export interface IActivity {
   category: string;
 }
 
-interface IHotel {
+export interface IHotel {
   id: number;
   name: string;
   city: string;
+  country: string;
   price: number;
   rating: number;
   image: string;
+  images: string[];
+  description: string;
+  Services: string[];
+  reviewCount: number;
 }

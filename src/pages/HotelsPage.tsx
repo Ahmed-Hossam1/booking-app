@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FaCalendarCheck, FaConciergeBell, FaDumbbell, FaHeadset, FaMapMarkerAlt, FaShieldAlt, FaSpa, FaStar, FaSwimmingPool, FaUtensils, FaWifi } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Button from "../components/Ui/Button";
 import SectionWrapper from "../components/sections/SectionWrapper";
-import type { IHotel } from "../interface";
+import hotelsData from "../data/hotelsData";
 
 
 
@@ -15,56 +16,6 @@ const amenities = [
     { icon: <FaConciergeBell />, name: "24/7 Concierge" },
 ];
 
-const hotelsData: IHotel[] = [
-    {
-        id: 1,
-        name: "Luxury Nile View",
-        city: "Cairo",
-        price: 250,
-        rating: 4.8,
-        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-        id: 2,
-        name: "Red Sea Resort",
-        city: "Hurghada",
-        price: 180,
-        rating: 4.5,
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-        id: 3,
-        name: "Pyramids Palace",
-        city: "Cairo",
-        price: 300,
-        rating: 4.9,
-        image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-        id: 4,
-        name: "Golden Sands",
-        city: "Sharm El Sheikh",
-        price: 220,
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-        id: 5,
-        name: "Alexandria Royal",
-        city: "Alexandria",
-        price: 150,
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-        id: 6,
-        name: "Desert Oasis",
-        city: "Luxor",
-        price: 190,
-        rating: 4.7,
-        image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800",
-    },
-];
 
 const HotelsPage = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -234,9 +185,11 @@ const HotelsPage = () => {
                                             <span className="text-sm text-gray-500 font-medium">/night</span>
                                         </div>
                                     </div>
-                                    <Button className="text-white text-sm px-7 py-3 rounded-xl font-bold hover:shadow-lg transition-all">
-                                        View Stay
-                                    </Button>
+                                    <Link to={`/hotels/${hotel.id}`}>
+                                        <Button className="text-white text-sm px-7 py-3 rounded-xl font-bold hover:shadow-lg transition-all">
+                                            View Stay
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
