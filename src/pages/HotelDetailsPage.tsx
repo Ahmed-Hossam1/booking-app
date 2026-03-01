@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import Button from "../components/Ui/Button";
-import hotelsData from "../data/hotelsData";
 import { activitiesData } from "../data/activitiesData";
 import ActivityCard from "../components/card/ActivityCard";
 import SectionWrapper from "../components/sections/SectionWrapper";
+import { hotelsData } from "@/data/hotelsData";
 
 const HotelDetailsPage = () => {
     const { hotelId } = useParams();

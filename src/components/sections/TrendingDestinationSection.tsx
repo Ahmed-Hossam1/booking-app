@@ -1,13 +1,12 @@
+import { Link } from "react-router-dom";
 import { trendingDestinationsData } from "../../data";
-import Bullets from "../Ui/Bullets";
 import DestinationCard from "../card/DestinationCard";
 import Heading from "../Ui/Heading";
 import SectionWrapper from "./SectionWrapper";
-import { Link } from "react-router-dom";
 
 const TrendingDestinationSection = () => {
   const content = trendingDestinationsData.map((item) => (
-    <Link to={`/explore/${item.title}`}>
+    <Link to={`/explore/${item.title}`} key={item.id}>
       <DestinationCard {...item} key={item.id} />
     </Link>
   ));
@@ -19,13 +18,6 @@ const TrendingDestinationSection = () => {
         {content}
       </div>
 
-      {/* Bullets */}
-      <div className="mt-20 flex items-center justify-center gap-3">
-        <Bullets />
-        <Bullets />
-        <Bullets />
-        <Bullets />
-      </div>
     </SectionWrapper>
   );
 };
