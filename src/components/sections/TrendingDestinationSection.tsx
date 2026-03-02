@@ -7,11 +7,11 @@ import SectionWrapper from "./SectionWrapper";
 const TrendingDestinationSection = () => {
   const content = trendingDestinationsData.map((item) => (
     <Link to={`/explore/${item.title}`} key={item.id}>
-      <DestinationCard {...item} key={item.id} />
+      <DestinationCard {...item} />
     </Link>
   ));
   return (
-    <SectionWrapper>
+    <SectionWrapper >
       <Heading title="trending destination" />
       {/* Cards */}
       <div className=" grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">

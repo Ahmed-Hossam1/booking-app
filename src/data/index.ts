@@ -1,4 +1,5 @@
 import type {
+  IBlogCard,
   IDestinationCard,
   IHeroImages,
   INavbarItems,
@@ -152,4 +153,34 @@ export const payImagesData: IPayImages[] = [
   { id: 4, src: "/images/discover.png", alt: "discover" },
   { id: 5, src: "/images/paypal.png", alt: "paypal" },
   { id: 6, src: "/images/amex.png", alt: "amex" },
+];
+
+export const travelBlogsData: IBlogCard[] = [
+  {
+    id: 1,
+    src: "/images/blog1.jpg",
+    alt: "Kenya vs Tanzania Safari",
+    date: "April 06 2023",
+    author: "Ali Tufan",
+    tag: "Trips",
+    title: "Kenya vs Tanzania Safari: The Better African Safari Experience",
+  },
+  {
+    id: 2,
+    src: "/images/blog2.jpg",
+    alt: "Exploring the Serengeti",
+    date: "April 07 2023",
+    author: "Emily Johnson",
+    tag: "Trips",
+    title: "Exploring the Serengeti: A Wildlife Adventure",
+  },
+  {
+    id: 3,
+    src: "/images/blog3.jpg",
+    alt: "Into the Wild",
+    date: "April 08 2023",
+    author: "Maxwell Rhodes",
+    tag: "Trips",
+    title: "Into the Wild: An Unforgettable Safari Journey",
+  },
 ];

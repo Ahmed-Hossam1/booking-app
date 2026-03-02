@@ -6,6 +6,7 @@ import PopularToursSection from "../components/sections/PopularToursSection";
 import PromoBanner from "../components/sections/PromoBanner";
 import TrendingDestinationSection from "../components/sections/TrendingDestinationSection";
 import WhyChooseUsSection from "../components/sections/WhyChooseUsSection";
+import TravelPackagesSection from "../components/sections/TravelPackagesSection";
 import { cities1, cities2 } from "@/data/hotelsData";
 
 const HomePage = () => {
@@ -46,6 +47,7 @@ const HomePage = () => {
       <PopularToursSection />
       <PromoBanner />
       <PopularThingsToDoSection />
+      <TravelPackagesSection />
       <CustomerReviewSection />
     </>
   );

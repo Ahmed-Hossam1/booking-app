@@ -31,7 +31,7 @@ const HeroSection = () => {
 
   const slides = heroSlidesData.map((image, index) => (
     <div key={index} className="w-full h-full shrink-0">
-      <Image  src={image.src} alt={image.alt} className="h-full object-cover" />
+      <Image src={image.src} alt={image.alt} className="h-full object-cover" />
     </div>
   ));
 
@@ -90,10 +90,6 @@ const HeroSection = () => {
           <span className="text-sm text-gray-700 text-center sm:text-left">
             Discover destinations, activities & experiences
           </span>
-
-          <Button className="sm:ml-2 text-sm font-medium px-4 py-2 transition text-white rounded-full w-full sm:w-auto ">
-            Get started
-          </Button>
         </div>
       </div>
     </section>

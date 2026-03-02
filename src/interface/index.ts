@@ -129,3 +129,13 @@ export interface IHotel {
   Services: string[];
   reviewCount: number;
 }
+
+export interface IBlogCard {
+  id: number;
+  src: string;
+  alt: string;
+  date: string;
+  author: string;
+  title: string;
+  tag: string;
+}
