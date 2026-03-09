@@ -1,4 +1,50 @@
-import type { IHotel } from "../interface";
+import type { IHotel, IRoom } from "../interface";
+
+const defaultRooms: IRoom[] = [
+  {
+    id: 101,
+    name: "Classic Single Room",
+    images: [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80&w=800"
+    ],
+    type: "Single",
+    beds: 1,
+    price: 120,
+    size: 25,
+    amenities: ["Free WiFi", "AC", "TV"],
+    status: "Available"
+  },
+  {
+    id: 102,
+    name: "Deluxe Double Room",
+    images: [
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800"
+    ],
+    type: "Double",
+    beds: 2,
+    price: 200,
+    size: 40,
+    amenities: ["Free WiFi", "AC", "TV", "Mini Bar"],
+    status: "Available",
+    hasBestValueBadge: true
+  },
+  {
+    id: 103,
+    name: "Executive Suite",
+    images: [
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800"
+    ],
+    type: "Suite",
+    beds: 3,
+    price: 450,
+    size: 80,
+    amenities: ["Free WiFi", "AC", "TV", "Mini Bar", "Bathtub", "Balcony"],
+    status: "Available"
+  }
+];
 
 export const hotelsData: IHotel[] = [
   {
@@ -28,6 +74,7 @@ export const hotelsData: IHotel[] = [
       "Mini Bar",
     ],
     reviewCount: 324,
+    rooms: defaultRooms,
   },
   {
     id: 2,
@@ -56,6 +103,7 @@ export const hotelsData: IHotel[] = [
       "Restaurant",
     ],
     reviewCount: 512,
+    rooms: defaultRooms,
   },
   {
     id: 3,
@@ -84,6 +132,7 @@ export const hotelsData: IHotel[] = [
       "Concierge",
     ],
     reviewCount: 876,
+    rooms: defaultRooms,
   },
   {
     id: 4,
@@ -112,6 +161,7 @@ export const hotelsData: IHotel[] = [
       "Parking",
     ],
     reviewCount: 643,
+    rooms: defaultRooms,
   },
   {
     id: 5,
@@ -140,6 +190,7 @@ export const hotelsData: IHotel[] = [
       "Library",
     ],
     reviewCount: 198,
+    rooms: defaultRooms,
   },
   {
     id: 6,
@@ -168,6 +219,7 @@ export const hotelsData: IHotel[] = [
       "Breakfast Included",
     ],
     reviewCount: 421,
+    rooms: defaultRooms,
   },
 ];
 

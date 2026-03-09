@@ -116,6 +116,19 @@ export interface IActivity {
   category: string;
 }
 
+export interface IRoom {
+  id: number;
+  name: string;
+  images: string[];
+  type: string;
+  beds: number;
+  price: number;
+  size: number;
+  amenities: string[];
+  status: "Available" | "Booked";
+  hasBestValueBadge?: boolean;
+}
+
 export interface IHotel {
   id: number;
   name: string;
@@ -128,6 +141,7 @@ export interface IHotel {
   description: string;
   Services: string[];
   reviewCount: number;
+  rooms?: IRoom[];
 }
 
 export interface IBlogCard {
