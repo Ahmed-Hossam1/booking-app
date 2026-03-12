@@ -11,6 +11,8 @@ import HotelsPage from "../pages/HotelsPage";
 import HotelDetailsPage from "../pages/HotelDetailsPage";
 import LoginPage from "../pages/Login";
 import SignUpPage from "../pages/SignUp";
+import TransportationPage from "../pages/TransportationPage";
+import TransportationDetailsPage from "../pages/TransportationDetailsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
         <Route path="explore/:destination" element={<ExplorePage />} />
         <Route path="hotels" element={<HotelsPage />} />
         <Route path="hotels/:hotelId" element={<HotelDetailsPage />} />
+        <Route path="transportation" element={<TransportationPage />} />
+        <Route path="transportation/:transportId" element={<TransportationDetailsPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
@@ -29,4 +33,6 @@ const router = createBrowserRouter(
 );
 
 export default router;
+
+
 

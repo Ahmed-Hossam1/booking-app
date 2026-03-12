@@ -153,3 +153,19 @@ export interface IBlogCard {
   title: string;
   tag: string;
 }
+
+export interface ITransportation {
+  id: number;
+  type: "Bus" | "Van" | "Car";
+  image: string;
+  images: string[];
+  price: number;
+  seats: number;
+  departureTime: string;
+  rating: number;
+  route: string;
+  description: string;
+  features: string[];
+  company: string;
+  duration: string;
+}
