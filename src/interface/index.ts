@@ -169,3 +169,31 @@ export interface ITransportation {
   company: string;
   duration: string;
 }
+
+export interface ITravelPackage {
+  id: number;
+  title: string;
+  image: string;
+  alt: string;
+  tag: string;
+  date: string;
+  author: string;
+  price: number;
+  duration: string;
+  activities: string[];
+  highlights: string[];
+}
+
+export interface ITour {
+  id: number;
+  title: string;
+  location: string;
+  image: string;
+  gallery: string[];
+  rating: number;
+  reviewCount: number;
+  duration: string;
+  price: number;
+  description: string;
+  itinerary: string[];
+}
