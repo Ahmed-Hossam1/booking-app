@@ -10,21 +10,18 @@ import type {
 } from "../interface";
 
 export const navbarItemsData: INavbarItems[] = [
-  { name: "Activities", link: "/activities" },
-
   {
     name: "Destinations",
     dropdown: [
-      { name: "Cities", link: "/cities" },
       { name: "Hotels", link: "/hotels" },
-      { name: "Restaurants", link: "/restaurants" },
       { name: "Transportation", link: "/transportation" },
+      { name: "Tours", link: "/tours" },
+      { name: "Packages", link: "/packages" },
     ],
   },
-
   {
     name: "Support",
-    link: "/support",
+    link: "/help",
   },
   {
     name: "Login",

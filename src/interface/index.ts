@@ -28,71 +28,23 @@ export interface IDestinationCard {
 type FooterLinks = {
   id: number;
   title: string;
+  link: string;
 };
 export const IFooterLinks: Record<string, FooterLinks[]> = {
   Company: [
-    {
-      id: 1,
-      title: "About",
-    },
-    {
-      id: 2,
-      title: "Tourz Reviews ",
-    },
-    {
-      id: 3,
-      title: "Contact us ",
-    },
-    {
-      id: 4,
-      title: "Travel Guides ",
-    },
-    {
-      id: 5,
-      title: "Data Policy ",
-    },
-    {
-      id: 6,
-      title: "Cookie Policy ",
-    },
-    {
-      id: 7,
-      title: "Legal ",
-    },
-    {
-      id: 8,
-      title: "Sitemap ",
-    },
+    { id: 1, title: "About", link: "/about" },
+    { id: 2, title: "Contact us", link: "/contact" },
+    { id: 3, title: "Privacy Policy", link: "/privacy" },
+    { id: 4, title: "Terms & Conditions", link: "/terms" },
   ],
 
   Support: [
-    {
-      id: 1,
-      title: "Get in Touch ",
-    },
-    {
-      id: 2,
-      title: "Help center ",
-    },
-    {
-      id: 3,
-      title: "Live chat ",
-    },
-    {
-      id: 4,
-      title: "How it works ",
-    },
+    { id: 1, title: "Help Center", link: "/help" },
   ],
 
   Mobile: [
-    {
-      id: 1,
-      title: "Android App",
-    },
-    {
-      id: 2,
-      title: "iOS App",
-    },
+    { id: 1, title: "Android App", link: "/" },
+    { id: 2, title: "iOS App", link: "/" },
   ],
 };
 

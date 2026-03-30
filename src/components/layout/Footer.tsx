@@ -10,7 +10,7 @@ const Footer = () => {
 
   const companyLinks = Company.map((item) => (
     <li key={item.id}>
-      <Link to={item.title} className="text-sm text-body hover:text-heading">
+      <Link to={item.link} className="text-sm text-body hover:text-heading">
         {item.title}
       </Link>
     </li>
@@ -18,7 +18,7 @@ const Footer = () => {
 
   const supportLinks = Support.map((item) => (
     <li key={item.id}>
-      <Link to={item.title} className="text-sm text-body hover:text-heading">
+      <Link to={item.link} className="text-sm text-body hover:text-heading">
         {item.title}
       </Link>
     </li>
@@ -26,7 +26,7 @@ const Footer = () => {
 
   const mobileLinks = Mobile.map((item) => (
     <li key={item.id}>
-      <Link to={item.title} className="text-sm text-body hover:text-heading">
+      <Link to={item.link} className="text-sm text-body hover:text-heading">
         {item.title}
       </Link>
     </li>

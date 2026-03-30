@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../Ui/Button";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import Input from "../Ui/Input";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,14 +21,9 @@ const Navbar = () => {
           </Link>
 
           {/* Search */}
-          <div className="hidden md:block">
-            <Input
-              type="text"
-              name="searchInput"
-              placeholder="Search destinations or activities"
-              className="w-87.5 h-11 px-4  focus:border-[#EB662B]"
-            />
-          </div>
+          <Link to="/search" className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-neutral-secondary text-body hover:text-[#EB662B] transition">
+            <FaSearch className="text-lg" />
+          </Link>
         </div>
 
         {/* Right Side */}
