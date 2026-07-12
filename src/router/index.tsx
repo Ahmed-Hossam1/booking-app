@@ -29,6 +29,7 @@ import PrivacyPage from "../pages/PrivacyPage";
 import SearchPage from "../pages/SearchPage";
 import TermsPage from "../pages/TermsPage";
 import CheckoutPage from "@/pages/CheckoutPage";
+import SavedPage from "@/pages/SavedPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="terms" element={<TermsPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="saved" element={<SavedPage />} />
       </Route>
       <Route path="/login/*" element={<LoginPage />} />
       <Route path="/sign-up/*" element={<SignUpPage />} />

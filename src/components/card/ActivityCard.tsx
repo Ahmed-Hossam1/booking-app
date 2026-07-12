@@ -2,12 +2,14 @@ import type { IActivity } from "../../interface";
 import { FaStar, FaClock } from "react-icons/fa";
 import Button from "../Ui/Button";
 import HeartButton from "../Ui/HeartButton";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
     activity: IActivity;
 }
 
 const ActivityCard = ({ activity }: IProps) => {
+    const navigate = useNavigate();
     return (
         <div className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 relative group">
             {/* Image Section */}
@@ -92,7 +94,22 @@ const ActivityCard = ({ activity }: IProps) => {
                                 From ${activity.price}
                             </span>
                         </div>
-                        <Button className="text-white text-sm px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
+                        <Button
+                            className="text-white text-sm px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity"
+                            onClick={() => {
+                                navigate("/checkout", {
+                                    state: {
+                                        type: "activity",
+                                        name: activity.title,
+                                        image: activity.image,
+                                        price: activity.price,
+                                        priceLabel: "/ person",
+                                        location: activity.category,
+                                        duration: activity.duration,
+                                    },
+                                });
+                            }}
+                        >
                             Book Now
                         </Button>
                     </div>

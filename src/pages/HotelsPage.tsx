@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Ui/Button";
 import SectionWrapper from "../components/sections/SectionWrapper";
 import { hotelsData } from "@/data/hotelsData";
+import HeartButton from "../components/Ui/HeartButton";
 
 const amenities = [
   { icon: <FaWifi />, name: "Free High-Speed WiFi" },
@@ -188,12 +189,23 @@ const HotelsPage = () => {
               key={hotel.id}
               className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
             >
-              {/* Hotel Image */}
+               {/* Hotel Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={hotel.image}
                   alt={hotel.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <HeartButton
+                  id={hotel.id}
+                  type="hotel"
+                  title={hotel.name}
+                  image={hotel.image}
+                  price={hotel.price}
+                  location={`${hotel.city}, ${hotel.country}`}
+                  rating={hotel.rating}
+                  reviewCount={hotel.reviewCount}
+                  className="absolute top-4 left-4 z-10 shadow-sm"
                 />
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[#05073C] font-bold shadow-sm flex items-center gap-1">
                   <FaStar className="text-yellow-400" />

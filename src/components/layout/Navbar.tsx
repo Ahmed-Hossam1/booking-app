@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { useWishlist } from "@/hooks/useWishlist";
+import { UserButton, useUser } from "@clerk/react";
 import { useState } from "react";
-import { useUser, UserButton } from "@clerk/react";
-import Button from "../Ui/Button";
+import { FaSearch } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Button from "../Ui/Button";
 
 const navLinksData = [
   {
@@ -17,6 +18,10 @@ const navLinksData = [
     ],
   },
   {
+    name: "Saved",
+    link: "/saved",
+  },
+  {
     name: "Support",
     link: "/help",
   },
@@ -26,12 +31,15 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { isSignedIn } = useUser();
+  const { wishlist } = useWishlist();
+
+  const wishlistCount = wishlist.length;
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-neutral-primary border-b border-default z-50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         {/* Left Side */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img src="/images/logo.jpeg" className="h-8 w-auto" alt="Logo" />
@@ -65,9 +73,14 @@ const Navbar = () => {
                 {item.link && (
                   <Link
                     to={item.link}
-                    className="text-sm font-medium transition text-body hover:text-[#EB662B]"
+                    className="text-sm font-medium transition text-body hover:text-[#EB662B] relative py-1 block z-10"
                   >
-                    {item.name}
+                    {item.name === "Saved" && wishlistCount > 0 && (
+                      <span className="absolute w-5 h-5 flex items-center justify-center -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#EB662B] to-[#ff7a45] text-white text-[9px] font-black rounded-full border-2 border-white shadow-sm z-20">
+                        {wishlistCount}
+                      </span>
+                    )}
+                    <span>{item.name}</span>
                   </Link>
                 )}
 
