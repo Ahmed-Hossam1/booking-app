@@ -11,7 +11,7 @@ interface IProps {
 const ActivityCard = ({ activity }: IProps) => {
     const navigate = useNavigate();
     return (
-        <div className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 relative group">
+        <div className="flex flex-col md:flex-row bg-white dark:bg-[#11121a] border border-gray-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 relative group">
             {/* Image Section */}
             <div className="relative w-full md:w-72 h-48 md:h-auto flex-shrink-0">
                 <img
@@ -46,12 +46,12 @@ const ActivityCard = ({ activity }: IProps) => {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold text-[#05073C] mb-2 line-clamp-2 hover:text-[#EB662B] transition-colors cursor-pointer">
+                <h3 className="text-lg font-semibold text-[#05073C] dark:text-white mb-2 line-clamp-2 hover:text-[#EB662B] transition-colors cursor-pointer">
                     {activity.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
                     {activity.description}
                 </p>
 
@@ -68,17 +68,17 @@ const ActivityCard = ({ activity }: IProps) => {
                             />
                         ))}
                     </div>
-                    <span className="text-sm font-medium text-[#05073C]">
+                    <span className="text-sm font-medium text-[#05073C] dark:text-gray-200">
                         {activity.rating}
                     </span>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
                         ({activity.reviewCount.toLocaleString()} reviews)
                     </span>
                 </div>
 
                 {/* Duration & Price Row */}
-                <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-1.5 text-sm text-gray-600">
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100 dark:border-neutral-800">
+                    <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
                         <FaClock className="w-4 h-4" />
                         <span>{activity.duration}</span>
                     </div>
@@ -90,7 +90,7 @@ const ActivityCard = ({ activity }: IProps) => {
                                     ${activity.originalPrice}
                                 </span>
                             )}
-                            <span className="text-lg font-bold text-[#05073C]">
+                            <span className="text-lg font-bold text-[#05073C] dark:text-white">
                                 From ${activity.price}
                             </span>
                         </div>
