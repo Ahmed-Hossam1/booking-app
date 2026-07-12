@@ -2,6 +2,7 @@ import { FaStar, FaClock, FaUsers, FaRoute } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Button from "../Ui/Button";
 import type { ITransportation } from "../../interface";
+import HeartButton from "../Ui/HeartButton";
 
 interface IProps {
   transport: ITransportation;
@@ -9,7 +10,7 @@ interface IProps {
 
 const TransportationCard = ({ transport }: IProps) => {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+    <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group flex flex-col h-full relative">
       {/* Image */}
       <Link to={`/transportation/${transport.id}`}>
         <div className="relative h-56 overflow-hidden">
@@ -17,6 +18,17 @@ const TransportationCard = ({ transport }: IProps) => {
             src={transport.image}
             alt={transport.type}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <HeartButton
+            id={transport.id}
+            type="transport"
+            title={`${transport.type} — ${transport.route}`}
+            image={transport.image}
+            price={transport.price}
+            location={transport.route}
+            rating={transport.rating}
+            duration={transport.duration}
+            className="absolute top-4 left-4 z-10 shadow-sm"
           />
           {/* Rating */}
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[#05073C] font-bold shadow-sm flex items-center gap-1">
