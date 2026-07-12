@@ -1,6 +1,7 @@
 import type { IActivity } from "../../interface";
 import { FaStar, FaClock } from "react-icons/fa";
 import Button from "../Ui/Button";
+import HeartButton from "../Ui/HeartButton";
 
 interface IProps {
     activity: IActivity;
@@ -8,13 +9,25 @@ interface IProps {
 
 const ActivityCard = ({ activity }: IProps) => {
     return (
-        <div className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 relative group">
             {/* Image Section */}
             <div className="relative w-full md:w-72 h-48 md:h-auto flex-shrink-0">
                 <img
                     src={activity.image}
                     alt={activity.title}
                     className="w-full h-full object-cover"
+                />
+                <HeartButton
+                    id={activity.id}
+                    type="activity"
+                    title={activity.title}
+                    image={activity.image}
+                    price={activity.price}
+                    location={activity.category}
+                    rating={activity.rating}
+                    reviewCount={activity.reviewCount}
+                    duration={activity.duration}
+                    className="absolute top-3 right-3 z-10 shadow-sm"
                 />
                 {activity.isBestSeller && (
                     <span className="absolute top-3 left-3 bg-[#EB662B] text-white text-xs font-semibold px-3 py-1 rounded-full">

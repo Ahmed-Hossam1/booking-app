@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { ITravelPackage } from "../../interface";
+import HeartButton from "../Ui/HeartButton";
 
 interface IProps {
   pkg: ITravelPackage;
@@ -7,12 +8,22 @@ interface IProps {
 
 const TravelBlogCard = ({ pkg }: IProps) => {
   return (
-    <Link to={`/packages/${pkg.id}`} className="group cursor-pointer block">
+    <Link to={`/packages/${pkg.id}`} className="group cursor-pointer block relative">
       <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
         <img
           src={pkg.image}
           alt={pkg.alt}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <HeartButton
+          id={pkg.id}
+          type="package"
+          title={pkg.title}
+          image={pkg.image}
+          price={pkg.price}
+          location={pkg.tag}
+          duration={pkg.duration}
+          className="absolute top-4 right-4 z-10 shadow-sm"
         />
         <div className="absolute top-4 left-4">
           <span className="px-4 py-1.5 bg-white rounded-lg text-sm font-medium text-heading shadow-sm">
