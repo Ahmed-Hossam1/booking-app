@@ -1,14 +1,31 @@
 import { Link } from "react-router-dom";
-import { navbarItemsData } from "../../data";
 import { useState } from "react";
+import { useUser, UserButton } from "@clerk/react";
 import Button from "../Ui/Button";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
 
+const navLinksData = [
+  {
+    name: "Destinations",
+    dropdown: [
+      { name: "Hotels", link: "/hotels" },
+      { name: "Transportation", link: "/transportation" },
+      { name: "Tours", link: "/tours" },
+      { name: "Packages", link: "/packages" },
+    ],
+  },
+  {
+    name: "Support",
+    link: "/help",
+  },
+];
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { isSignedIn } = useUser();
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-neutral-primary border-b border-default z-50">
@@ -27,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
           {/* Mobile Button */}
           <Button
             type="button"
@@ -42,18 +59,13 @@ const Navbar = () => {
           <ul
             className={` ${mobileOpen ? "flex" : "hidden"} lg:flex flex-col lg:flex-row lg:items-center gap-6 absolute lg:static top-16 left-0 z-50 w-full lg:w-auto bg-neutral-primary lg:bg-transparent border-b lg:border-none p-4 lg:p-0 shadow-lg lg:shadow-none`}
           >
-            {navbarItemsData.map((item, index) => (
+            {navLinksData.map((item, index) => (
               <li key={index} className="relative">
                 {/* Normal Link */}
                 {item.link && (
                   <Link
                     to={item.link}
-                    className={`text-sm font-medium transition
-                      ${
-                        index === navbarItemsData.length - 1
-                          ? "bg-[#EB662B] text-white px-6 py-2 rounded-md"
-                          : "text-body hover:text-[#EB662B]"
-                      }`}
+                    className="text-sm font-medium transition text-body hover:text-[#EB662B]"
                   >
                     {item.name}
                   </Link>
@@ -98,6 +110,40 @@ const Navbar = () => {
                 )}
               </li>
             ))}
+
+            {/* Auth Section */}
+            {!isSignedIn && (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="text-sm font-medium transition text-body hover:text-[#EB662B]"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/sign-up"
+                    className="bg-[#EB662B] text-white px-6 py-2 rounded-md text-sm font-medium transition hover:bg-[#d45a25]"
+                  >
+                    Sign up
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {isSignedIn && (
+              <li className="flex items-center">
+                <UserButton
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-9 h-9 ring-2 ring-[#EB662B]/20 ring-offset-2 rounded-full",
+                    },
+                  }}
+                />
+              </li>
+            )}
           </ul>
         </div>
       </div>

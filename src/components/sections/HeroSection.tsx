@@ -1,95 +1,172 @@
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Button from "../Ui/Button";
-import { useEffect, useState } from "react";
-import { heroSlidesData } from "../../data";
-import Image from "../Ui/Image";
+import { useEffect, useRef, useState } from "react";
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+
+const heroVideos = [
+  "https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4",
+  "https://videos.pexels.com/video-files/1739010/1739010-uhd_2560_1440_24fps.mp4",
+  "https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4",
+];
 
 const HeroSection = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const NextImage = () => {
-    if (currentIndex === heroSlidesData.length - 1) return setCurrentIndex(0);
-    setCurrentIndex((prev) => prev + 1);
-  };
-
-  const PrevImage = () => {
-    if (currentIndex === 0) return setCurrentIndex(heroSlidesData.length - 1);
-    setCurrentIndex((prev) => prev - 1);
-  };
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!heroSlidesData.length) return;
+    const video = videoRef.current;
+    if (!video) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev === heroSlidesData.length - 1 ? 0 : prev + 1,
-      );
-    }, 5000);
+    const handleEnded = () => {
+      setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
+    };
 
-    return () => clearInterval(interval);
+    video.addEventListener("ended", handleEnded);
+    return () => video.removeEventListener("ended", handleEnded);
   }, []);
 
-  const slides = heroSlidesData.map((image, index) => (
-    <div key={index} className="w-full h-full shrink-0">
-      <Image src={image.src} alt={image.alt} className="h-full object-cover" />
-    </div>
-  ));
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    setIsLoaded(false);
+    video.src = heroVideos[currentVideoIndex];
+    video.load();
+    video.play().catch(() => { });
+    setIsPlaying(true);
+  }, [currentVideoIndex]);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
 
   return (
-    <section className="relative w-full h-[80vh] md:rounded-2xl overflow-hidden">
-      {/* Slider wrapper */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="flex h-full transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <section className="relative w-full h-[85vh] md:rounded-2xl overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          onLoadedData={() => setIsLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        />
+
+        {/* Fallback gradient while video loads */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-[#05073C] via-[#1a1d4e] to-[#2d1b4e] animate-pulse" />
+        )}
+      </div>
+
+      {/* Cinematic Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 z-[5]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20 z-[5]" />
+
+      {/* Animated Grain Texture */}
+      <div
+        className="absolute inset-0 z-[6] opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Video Controls */}
+      <div className="absolute bottom-6 right-6 z-30 flex items-center gap-2">
+        <button
+          onClick={togglePlay}
+          className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center text-white/80 hover:bg-white/25 hover:text-white active:scale-95 transition-all duration-200 border border-white/10"
+          aria-label={isPlaying ? "Pause video" : "Play video"}
         >
-          {slides}
+          {isPlaying ? <FaPause className="text-xs" /> : <FaPlay className="text-xs ml-0.5" />}
+        </button>
+        <button
+          onClick={toggleMute}
+          className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center text-white/80 hover:bg-white/25 hover:text-white active:scale-95 transition-all duration-200 border border-white/10"
+          aria-label={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? <FaVolumeMute className="text-sm" /> : <FaVolumeUp className="text-sm" />}
+        </button>
+
+        {/* Video Progress Dots */}
+        <div className="flex items-center gap-1.5 ml-2">
+          {heroVideos.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentVideoIndex(idx)}
+              className={`rounded-full transition-all duration-300 ${idx === currentVideoIndex
+                  ? "w-6 h-2 bg-white"
+                  : "w-2 h-2 bg-white/40 hover:bg-white/60"
+                }`}
+              aria-label={`Play video ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 z-5" />
-
-      {/* Arrows */}
-      <Button
-        onClick={PrevImage}
-        backgroundColor=""
-        className=" absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/25 backdrop-blur flex items-center justify-center text-white hover:bg-white/40 active:scale-95 transition"
-      >
-        <FaArrowLeft className="text-sm sm:text-base" />
-      </Button>
-
-      <Button
-        backgroundColor=""
-        onClick={NextImage}
-        className=" absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/25 backdrop-blur flex items-center justify-center text-white hover:bg-white/40 active:scale-95 transition"
-      >
-        <FaArrowRight className="text-sm sm:text-base" />
-      </Button>
-
       {/* Content */}
-      <div className=" relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6">
+        {/* Badge */}
+        <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/90 text-xs font-medium tracking-wide uppercase animate-fade-in">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#EB662B] animate-pulse" />
+          Discover the world
+        </div>
+
         {/* Title */}
-        <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-          Your world of joy
+        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight max-w-4xl">
+          Your world of
+          <span className="block bg-gradient-to-r from-[#EB662B] via-[#f59e0b] to-[#EB662B] bg-clip-text text-transparent">
+            joy & adventure
+          </span>
         </h1>
 
         {/* Description */}
-        <p className=" text-white/85 mt-3 sm:mt-4 max-w-md sm:max-w-xl text-sm sm:text-base leading-relaxed">
+        <p className="text-white/75 mt-5 sm:mt-6 max-w-md sm:max-w-xl text-sm sm:text-base lg:text-lg leading-relaxed font-light">
           From local escapes to far-flung adventures, discover journeys made for
           you
         </p>
 
-        <div className=" mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/95 backdrop-blur px-4 sm:px-6 py-3 rounded-2xl sm:rounded-full shadow-md w-full max-w-md sm:max-w-fit">
-          <span className="text-xs font-medium text-gray-500">
+        {/* CTA Pill */}
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/95 backdrop-blur-md px-5 sm:px-7 py-3.5 rounded-2xl sm:rounded-full shadow-2xl shadow-black/20 w-full max-w-md sm:max-w-fit border border-white/50">
+          <span className="text-xs font-semibold text-[#EB662B] tracking-wide uppercase">
             ✦ Explore smarter
           </span>
 
           <span className="hidden sm:block h-4 w-px bg-gray-300" />
 
-          <span className="text-sm text-gray-700 text-center sm:text-left">
+          <span className="text-sm text-gray-700 text-center sm:text-left font-medium">
             Discover destinations, activities & experiences
           </span>
+        </div>
+
+        {/* Stats */}
+        <div className="mt-10 sm:mt-14 flex items-center gap-6 sm:gap-10">
+          {[
+            { value: "50K+", label: "Happy Travelers" },
+            { value: "1,200+", label: "Destinations" },
+            { value: "4.9", label: "Average Rating" },
+          ].map((stat, idx) => (
+            <div key={idx} className="text-center">
+              <div className="text-white text-xl sm:text-2xl font-bold">{stat.value}</div>
+              <div className="text-white/50 text-xs sm:text-sm font-medium mt-0.5">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

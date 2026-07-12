@@ -24,11 +24,11 @@ import TravelPackagesPage from "../pages/TravelPackagesPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import FAQPage from "../pages/FAQPage";
-import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import PrivacyPage from "../pages/PrivacyPage";
 import SearchPage from "../pages/SearchPage";
 import TermsPage from "../pages/TermsPage";
+import CheckoutPage from "@/pages/CheckoutPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,10 +51,10 @@ const router = createBrowserRouter(
         <Route path="help" element={<FAQPage />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="terms" element={<TermsPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
       </Route>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
-      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/login/*" element={<LoginPage />} />
+      <Route path="/sign-up/*" element={<SignUpPage />} />
       {/* ── 404 catch-all ── */}
       <Route path="*" element={<NotFoundPage />} />
     </>

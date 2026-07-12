@@ -1,6 +1,6 @@
 import { hotelsData } from "@/data/hotelsData";
 import { FaCheck, FaMapMarkerAlt, FaStar } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import ActivityCard from "../components/card/ActivityCard";
 import HotelGallerySlider from "../components/hotel/HotelGallerySlider";
 import RoomCard from "../components/hotel/RoomCard";
@@ -9,6 +9,7 @@ import Button from "../components/Ui/Button";
 import { activitiesData } from "../data/activitiesData";
 
 const HotelDetailsPage = () => {
+    const navigate = useNavigate();
     // Get the hotel ID from the URL
     const { hotelId } = useParams();
 
@@ -38,9 +39,21 @@ const HotelDetailsPage = () => {
     const hotelRooms = hotel.rooms || [];
 
 
-    // Test Function when user clicks "Book Now"
+    // Navigate to checkout when user clicks "Book Now"
     const handleBookRoom = (roomId: number) => {
-        alert(`Booking room ID: ${roomId}! Redirecting to checkout...`);
+        const room = hotelRooms.find((r) => r.id === roomId);
+        if (!room) return;
+        navigate("/checkout", {
+            state: {
+                type: "hotel",
+                name: hotel.name,
+                image: hotel.images[0] || hotel.image,
+                price: room.price,
+                priceLabel: "/ night",
+                location: `${hotel.city}, ${hotel.country}`,
+                roomName: room.name,
+            },
+        });
     };
 
     return (

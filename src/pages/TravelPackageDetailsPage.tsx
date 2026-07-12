@@ -1,9 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { travelPackagesData } from "../data";
 import { FaArrowLeft, FaCheck, FaStar, FaClock, FaTag } from "react-icons/fa6";
 
 const TravelPackageDetailsPage = () => {
   const { packageId } = useParams<{ packageId: string }>();
+  const navigate = useNavigate();
   const pkg = travelPackagesData.find((p) => p.id === Number(packageId));
 
   if (!pkg) {
@@ -106,7 +107,22 @@ const TravelPackageDetailsPage = () => {
 
             <hr className="border-gray-100" />
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition text-sm">
+            <button
+              onClick={() => {
+                if (!pkg) return;
+                navigate("/checkout", {
+                  state: {
+                    type: "package",
+                    name: pkg.title,
+                    image: pkg.image,
+                    price: pkg.price,
+                    priceLabel: "/ person",
+                    duration: pkg.duration,
+                  },
+                });
+              }}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition text-sm"
+            >
               Book Now
             </button>
             <button className="w-full border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 rounded-xl transition text-sm">

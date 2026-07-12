@@ -6,12 +6,13 @@ import {
   FaStar,
   FaUsers,
 } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Button from "../components/Ui/Button";
 import SectionWrapper from "../components/sections/SectionWrapper";
 import { transportationData } from "../data/transportationData";
 
 const TransportationDetailsPage = () => {
+  const navigate = useNavigate();
   // Get the transport ID from the URL
   const { transportId } = useParams();
 
@@ -242,7 +243,23 @@ const TransportationDetailsPage = () => {
                 </div>
               </div>
 
-              <Button className="w-full py-4 rounded-xl text-white font-bold text-lg hover:shadow-lg transition-all">
+              <Button
+                className="w-full py-4 rounded-xl text-white font-bold text-lg hover:shadow-lg transition-all"
+                onClick={() => {
+                  if (!transport) return;
+                  navigate("/checkout", {
+                    state: {
+                      type: "transport",
+                      name: `${transport.type} — ${transport.route}`,
+                      image: transport.images[0] || transport.image,
+                      price: transport.price,
+                      priceLabel: "/ trip",
+                      location: transport.route,
+                      duration: transport.duration,
+                    },
+                  });
+                }}
+              >
                 Book Now
               </Button>
 
