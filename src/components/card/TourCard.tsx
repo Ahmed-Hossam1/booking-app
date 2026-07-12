@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { ITour } from "../../interface";
+import HeartButton from "../Ui/HeartButton";
 
 interface IProps {
   tour: ITour;
@@ -9,13 +10,25 @@ const TourCard = ({ tour }: IProps) => {
   return (
     <Link
       to={`/tours/${tour.id}`}
-      className="block bg-white border border-[#E7E6E6] rounded-xl overflow-hidden hover:shadow-lg transition"
+      className="block bg-white border border-[#E7E6E6] rounded-xl overflow-hidden hover:shadow-lg transition relative group"
     >
       <div className="relative p-2 rounded-xl">
         <img
           src={tour.image}
           alt={tour.title}
           className="rounded-xl w-full h-44 object-cover"
+        />
+        <HeartButton
+          id={tour.id}
+          type="tour"
+          title={tour.title}
+          image={tour.image}
+          price={tour.price}
+          location={tour.location}
+          rating={tour.rating}
+          reviewCount={tour.reviewCount}
+          duration={tour.duration}
+          className="absolute top-4 right-4 z-10 shadow-sm"
         />
         {/* Floating white circle */}
         <span className="absolute bottom-0 right-4 translate-y-1/2 w-9 h-9 bg-white rounded-full" />
