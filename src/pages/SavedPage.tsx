@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useWishlist, type ISavedItem } from "@/hooks/useWishlist";
-import { FaHeart, FaTrash, FaMapMarkerAlt, FaStar, FaClock, FaHeartBroken, FaArrowRight } from "react-icons/fa";
-import { toast } from "sonner";
 import SectionWrapper from "@/components/sections/SectionWrapper";
+import { useWishlist, type ISavedItem } from "@/hooks/useWishlist";
+import { useState } from "react";
+import { FaArrowRight, FaClock, FaHeart, FaHeartBroken, FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const categories: { label: string; value: "all" | ISavedItem["type"] }[] = [
   { label: "All Items", value: "all" },
@@ -29,7 +29,7 @@ const SavedPage = () => {
   const handleBookNow = (item: ISavedItem, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     // Map details to the checkout format
     navigate("/checkout", {
       state: {
@@ -71,7 +71,7 @@ const SavedPage = () => {
   return (
     <SectionWrapper className="bg-gray-50 min-h-screen pt-8 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mb-10 text-center sm:text-left">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#05073C] mb-2">Saved Items</h1>
@@ -90,17 +90,15 @@ const SavedPage = () => {
                 <button
                   key={cat.value}
                   onClick={() => setActiveTab(cat.value)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${
-                    isActive
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${isActive
                       ? "bg-[#EB662B] text-white shadow-md shadow-orange-500/10"
                       : "bg-white text-gray-500 hover:text-[#05073C] border border-gray-100 hover:border-gray-200 shadow-xs"
-                  }`}
+                    }`}
                 >
                   {cat.label}
                   <span
-                    className={`inline-flex items-center justify-center text-2xs px-2 py-0.5 rounded-full ${
-                      isActive ? "bg-white/20 text-white" : "bg-gray-100 text-gray-500"
-                    }`}
+                    className={`inline-flex items-center justify-center text-2xs px-2 py-0.5 rounded-full ${isActive ? "bg-white/20 text-white" : "bg-gray-100 text-gray-500"
+                      }`}
                   >
                     {count}
                   </span>
@@ -127,7 +125,7 @@ const SavedPage = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  
+
                   {/* Category Badge */}
                   <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-[#EB662B] shadow-xs uppercase tracking-wide">
                     {item.type}
